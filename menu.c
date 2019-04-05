@@ -5,9 +5,9 @@ int ask_menu(int is_login){
 // 리턴값 : 선택한 메뉴번호
 // 메뉴번호 : 1. Sign up 2. Log in 3. Log out 0. Exit
   int menu;
-  if(is_login==0)
+  if(is_login==0) // 로그인 안 함. 
     printf("Choose menu : 1. Sign up 2. Log in 0. Exit >> ");
-  else
+  else //로그인 한 경우
     printf("Choose menu : 3. Log out 0. Exit >> ");
   scanf("%d", &menu);
   return menu;

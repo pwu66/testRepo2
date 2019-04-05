@@ -1,5 +1,6 @@
 #include "user.h"
 
+//user.tct의 파일에 있는 사용자 id,password 읽어오기
 int load_file(LOGIN* list[], char* filename){
   int count=0;
   FILE *datafile = fopen(filename, "r");
@@ -13,13 +14,14 @@ int load_file(LOGIN* list[], char* filename){
   return count;
 }
 
+//회원가입
 void join(LOGIN* list[], int count){
   char id[20], pass[20];
   while(1){
     printf("Enter new user id >> ");
     scanf("%s", id);
     int dup=0;
-    for(int i=0;i<count;i++){
+    for(int i=0;i<count;i++){//현재 있는 id 인지 check
       if(strcmp(id, list[i]->id)==0) {
         dup=1; break;
       }
@@ -27,7 +29,7 @@ void join(LOGIN* list[], int count){
     if(dup==1){
       printf("Already exist!!\n");
     }
-    else{
+    else{ //없으면
       printf("Enter password >> ");
       scanf("%s", pass);
       list[count] = (LOGIN*)malloc(sizeof(LOGIN));
@@ -38,7 +40,7 @@ void join(LOGIN* list[], int count){
     }
   }
 }
-
+//
 int login(LOGIN* list[], int count){
   char id[20], pass[20];
   printf("Enter user id >> ");
