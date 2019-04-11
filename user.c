@@ -2,7 +2,12 @@
 
 //user.tct의 파일에 있는 사용자 id,password 읽어오기
 int load_file(LOGIN* list[], char* filename){
-  int count=0;
+ #ifdef DEBUG_MODE
+  printf("DEBUG: load_file()");
+ 
+ #endif
+  
+int count=0;
   int choice;
  FILE *datafile = fopen(filename, "r");
 
@@ -86,13 +91,19 @@ int login(LOGIN* list[], int count){
     }
   }
 }
-
 void logout(int* is_login){
-  *is_login = 0;
+#ifdef DEBUG_MODE
+
+printf("DEBUG: logout()");
+  #endif  
+*is_login = 0;
   printf("Logout!!\n");
 }
 
 void save_file(LOGIN* list[], int count, char* filename){
+ #ifdef DEBUG_MODE
+     printf("DEBUG: save_file()");
+#endif
   FILE *datafile = fopen(filename, "w");
   for(int i=0; i<count; i++){
     fprintf(datafile, "%s %s\n", list[i]->id, list[i]->password);
@@ -100,9 +111,12 @@ void save_file(LOGIN* list[], int count, char* filename){
   printf("%s Saved!\n", filename);
   fclose(datafile);
 }
-
 void list(LOGIN* list[], int count){
-    for(int i=0; i<count; i++){
+#ifdef DEBUG_MODE
+printf("DEBUG: list()"); 
+#endif
+ 
+for(int i=0; i<count; i++){
      printf("[%d]%s / %s\n",i+1,list[i]->id, list[i]->password); 
  }
 }

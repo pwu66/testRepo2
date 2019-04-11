@@ -1,4 +1,4 @@
-new : main.o menu.o user.o
+manager : main.o menu.o user.o
 	gcc -o new main.o menu.o user.o
 main.o : main.c
 	gcc -c -o main.o main.c
@@ -8,4 +8,4 @@ user.o : user.c
 	gcc -c -o user.o user.c
 
 clean :
-	rm *.o new
+	rm *.o manager
